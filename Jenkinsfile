@@ -20,7 +20,8 @@ pipeline {
             steps {
                 sh 'npm run build'
                 sh 'tar -czvf build.tar.gz build/*'
-                archiveArtifacts artifacts: 'buid.tar.gz', followSymlinks: fals
+                archiveArtifacts artifacts: 'buid.tar.gz', followSymlinks: false
+                sh ''
             }
         }
     }
