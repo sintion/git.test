@@ -23,10 +23,8 @@ pipeline {
                 archiveArtifacts artifacts: 'build.tar.gz', followSymlinks: false
                 
             }
-        } 
-    }    
-}
-/*        stage('build docker image'){
+        }    
+        stage('build docker image'){
             steps{
                 sh 'docker build -t appimg .'
             }
@@ -55,4 +53,3 @@ pipeline {
         }
     }
 }
-*/
