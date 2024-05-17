@@ -36,15 +36,17 @@ pipeline {
             }    
         }
         stage('cleanup container'){
-            when{
-                sh 'docker container ls -a | grep app'
-            }
             steps{
-                sh 'docker container stop app'
-                sh 'docker container rm app'
+                sh '''
+                    if docker container ls -a | grep app ;
+                    then
+                        docker container stop app
+                        docker container rm app
+                    fi
+                '''        
+                }
             }
-        }
-        stage('deploy image'){
+        stage('deploy container'){
             steps{
                 sh 'docker run -d -p 4000:80 --name app appimg'
                 sleep 10
