@@ -12,7 +12,7 @@ pipeline {
         stage('test') {
             steps {
                 sh 'nohup npm start &'
-                sh 'sleep 10'
+                sleep 10
                 sh 'curl -k localhost:3000'
             }
         }
