@@ -23,18 +23,19 @@ pipeline {
                 archiveArtifacts artifacts: 'build.tar.gz', followSymlinks: false
                 
             }
-        }    
+        } 
+        // stage('publish docker img')   
         stage('build docker image'){
             steps{
                 sh 'docker build -t appimg .'
             }
         }    
-        stage('publish docker image'){
-            steps{
-                sh 'docker tag appimg appimg:1.0.0'
-                sh 'docker push sintion/appimg:1.0.0'
-            }    
-        }
+       // stage('publish docker image'){
+        //    steps{
+        //        sh 'docker tag appimg appimg:1.0.0'
+        //        sh 'docker push sintion/appimg:1.0.0'
+        //    }    
+        //}
         stage('cleanup container'){
             steps{
                 sh '''
